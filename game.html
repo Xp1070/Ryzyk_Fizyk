@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ryzyk_Fizyk</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function openBet(space){
+            document.getElementById("betting").style = "display: block;"
+            document.getElementById("space_name").innerText = "Pole ".space;
+        }
+    </script>
+</head>
+<body>
+    <div id="board">
+        <div id="spaces" class="rubik">
+            <div class="space" onClick="openBet(0)"><p>6 do 1</p></div>
+            <div class="space" onClick="openBet(1)"><p>5 do 1</p></div>
+            <div class="space" onClick="openBet(2)"><p>4 do 1</p></div>
+            <div class="space" onClick="openBet(3)"><p>3 do 1</p></div>
+            <div class="space" id="center_space" onClick="openBet(4)"><p>2 do 1</p></div>
+            <div class="space" onClick="openBet(5)"><p>3 do 1</p></div>
+            <div class="space" onClick="openBet(6)"><p>4 do 1</p></div>
+            <div class="space" onClick="openBet(7)"><p>5 do 1</p></div>
+        </div>
+    </div>
+    <div id="betting">
+        <form>
+            <p id="space_name">Pole x</p>
+            <p>Ile chcesz obstawić na tą opcję?</p>
+        </form>
+    </div>
+</body>
+</html>

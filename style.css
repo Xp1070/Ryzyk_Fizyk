@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Spray+Paint&display=swap');
+.rubik {
+    font-family: "Rubik Spray Paint", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    font-weight: normal;
+}
+#title{
+    text-align: center;
+    
+}
+#numOfPlayer{
+    text-align: center;
+}
+#nameOfPlayer{
+    text-align: center;
+    visibility:hidden;
+}
+body, html{
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+#board{
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    align-content: center;
+}
+#spaces{
+    display: flex;
+    justify-content: center;
+    height: 75%;
+    width: 95%; 
+    background-color: green;
+    margin: auto;
+    padding: 2%;
+}
+.space{
+    text-align: center;
+    font-size: 40px;
+    height: 95%;
+    width: 11%;
+    margin: auto 1%;
+    background-color: white;
+    float: left;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: black;
+}
+.space:hover{
+    background-color: grey;
+}
+#betting{
+    display: none;
+}
