@@ -3,7 +3,6 @@
     font-family: "Rubik Spray Paint", system-ui;
     font-weight: 400;
     font-style: normal;
-    font-weight: normal;
 }
 #title{
     text-align: center;
@@ -47,10 +46,41 @@ body, html{
     border-radius: 5px;
     border-style: solid;
     border-color: black;
+    transition-duration: 0.5s;
 }
 .space:hover{
     background-color: grey;
 }
 #betting{
     display: none;
+    position: fixed;
+    text-align: center;
+    align-content: center;
+    width: 500px;
+    height: 200px;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px; /* Negative half of height. */
+    margin-left: -250px; /* Negative half of width. */
+    background-color: white;
+    border-radius: 5px;
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
+}
+#betting form{
+    height: 100%;
+}
+#betting p{
+    width: auto;
+    margin: 0;
+}
+#close{
+    float: right;
+    height: 30px;
+    width: 30px;
+    border-radius: 10px;
+}
+#close:hover{
+    background-color: grey;
 }

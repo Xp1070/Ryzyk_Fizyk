@@ -8,7 +8,39 @@
     <script>
         function openBet(space){
             document.getElementById("betting").style = "display: block;"
-            document.getElementById("space_name").innerText = "Pole ".space;
+            console.log(space);
+            document.getElementById("space_name").innerText = "Pole " + (space + 1);
+            let rate;
+            switch(space){
+                case 0:
+                    rate = 6;
+                    break;
+                case 1:
+                    rate = 5;
+                    break;
+                case 2:
+                    rate = 4;
+                    break;
+                case 3:
+                    rate = 3;
+                    break;
+                case 4:
+                    rate = 2;
+                    break;
+                case 5:
+                    rate = 3;
+                    break;
+                case 6:
+                    rate = 4;
+                    break;
+                case 7:
+                    rate = 5;
+                    break;
+            }
+            document.getElementById("space_rate").innerText = "Stawka " + rate + " do 1";
+        }
+        function closeBet(){
+            document.getElementById("betting").style = "display: none;"
         }
     </script>
 </head>
@@ -27,8 +59,12 @@
     </div>
     <div id="betting">
         <form>
+            <div id="close" onclick="closeBet()">X</div>
             <p id="space_name">Pole x</p>
+            <p id="space_rate">Stawka x do 1</p>
             <p>Ile chcesz obstawić na tą opcję?</p>
+            <input type="number">
+            <input type="submit" value="Obstaw">
         </form>
     </div>
 </body>
