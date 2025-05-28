@@ -13,7 +13,6 @@
 }
 #nameOfPlayer{
     text-align: center;
-    visibility:hidden;
 }
 body, html{
     margin: 0;
