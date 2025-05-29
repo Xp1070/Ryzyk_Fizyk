@@ -83,3 +83,11 @@ body, html{
 #close:hover{
     background-color: grey;
 }
+#playerList p{
+    color : white;
+    font-size: 20px;
+    width: 12.5%;
+    float: left;
+    text-align: center;
+    margin: 0;
+}

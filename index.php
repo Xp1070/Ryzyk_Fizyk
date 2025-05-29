@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['players'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rydzyk-Fizyk</title>
+    <title>Ryzyk-Fizyk</title>
     <link rel="stylesheet" href="style.css">
     <script>
         function printPlayers() {
@@ -26,6 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['players'])) {
                 let input = document.createElement("input");
                 input.type = "text";
                 input.name = "players[]";
+                input.maxLength=15;
                 input.placeholder = "Gracz " + (i + 1);
                 input.required = true;
                 inputsDiv.appendChild(input);
