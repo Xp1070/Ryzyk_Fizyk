@@ -1,5 +1,25 @@
 <?php
 session_start();
+if (!isset($_SESSION['players'])) {
+    header('Location: index.php');
+    exit();
+}
+function getQuestionsAndAnswers() {
+    $host = 'localhost';
+    $db = 'pytania';
+    $user = 'root';
+    $pass = '';
+    $charset = 'utf8mb4';
+
+    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+    $pdo = new PDO($dsn, $user, $pass);
+    $stmt = $pdo->prepare("SELECT pytanie, odp FROM pytania LIMIT 100");
+    $stmt->execute();
+    $result = $stmt->fetchAll();
+    return $result;
+}
+$questions = getQuestionsAndAnswers();
+print_r($questions);
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -12,17 +32,41 @@ session_start();
 <body>
     <div id="board">
         <div id="playerList">
-            <button id="start" onclick="listPlayers()">Lista graczy</button>
+            
         </div>
         <div id="spaces" class="rubik">
-            <div class="space" onClick="openBet(0)"><p>6 do 1</p></div>
-            <div class="space" onClick="openBet(1)"><p>5 do 1</p></div>
-            <div class="space" onClick="openBet(2)"><p>4 do 1</p></div>
-            <div class="space" onClick="openBet(3)"><p>3 do 1</p></div>
-            <div class="space" id="center_space" onClick="openBet(4)"><p>2 do 1</p></div>
-            <div class="space" onClick="openBet(5)"><p>3 do 1</p></div>
-            <div class="space" onClick="openBet(6)"><p>4 do 1</p></div>
-            <div class="space" onClick="openBet(7)"><p>5 do 1</p></div>
+            <div class="space" onClick="openBet(0)">
+                <p>6 do 1</p>
+                <p .class="panswer">?</p>
+            </div>
+            <div class="space" onClick="openBet(1)">
+                <p>5 do 1</p>
+                <p class="panswer">?</p>
+            </div>
+            <div class="space" onClick="openBet(2)">
+                <p>4 do 1</p>
+                <p class="panswer">?</p>
+            </div>
+            <div class="space" onClick="openBet(3)">
+                <p>3 do 1</p>
+                <p class="panswer">?</p>
+            </div>
+            <div class="space" id="center_space" onClick="openBet(4)">
+                <p>2 do 1</p>
+                <p class="panswer">?</p>
+            </div>
+            <div class="space" onClick="openBet(5)">
+                <p>3 do 1</p>
+                <p class="panswer">?</p>
+            </div>
+            <div class="space" onClick="openBet(6)">
+                <p>4 do 1</p>
+                <p class="panswer">?</p>
+            </div>
+            <div class="space" onClick="openBet(7)">
+                <p>5 do 1</p>
+                <p class="panswer">?</p>
+            </div>
         </div>
     </div>
     <div id="betting">
@@ -32,12 +76,16 @@ session_start();
             <p id="space_rate">Stawka x do 1</p>
             <p>Ile chcesz obstawić na tą opcję?</p>
             <input type="number">
-            <input type="submit" value="Obstaw">
+            <input type="button" value="Obstaw" onClick="nextPlayer();">
         </form>
+    </div>
+    <div id="answer">
+        <p>Odpowiedź: <span id="answer_text">...</span></p>
     </div>
 </body>
 </html>    
     <script>
+        var currentPlayer = -1; 
         function listPlayers(){
             let lista = document.getElementById("playerList");
             lista.innerHTML = "";
@@ -47,9 +95,36 @@ session_start();
             let p = document.createElement("p");
             let cash = (money && money[i] !== undefined) ? money[i] : 0;
             p.innerHTML = players[i] + " - " + cash + " zł";
+            p.id = i;
             lista.appendChild(p);
             }
         }
+        function showQuestion(){
+            let question = 0;
+            answer.innerText = question;
+            document.getElementById("answer").style.display = "block";
+        }
+        function changeHighlight(){
+            let pastP = document.getElementById(currentPlayer - 1);
+            let p = document.getElementById(currentPlayer);
+            if (pastP) pastP.className = "";
+            if (p) p.className = "highlight";
+        }
+        function revealAnswer(){
+            let answer = document.getElementById("answer");
+            answer.style.display = "block";
+        }
+        function nextPlayer(){
+            currentPlayer++;
+            changeHighlight();
+            closeBet();
+            if(currentPlayer >= <?php echo count($_SESSION['players']); ?>) {
+                revealAnswer();
+                currentPlayer = -1;
+            }
+        }
+        listPlayers();
+        nextPlayer();
 
         function openBet(space){
             document.getElementById("betting").style.display = "block";

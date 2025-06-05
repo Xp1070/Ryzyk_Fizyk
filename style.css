@@ -59,8 +59,8 @@ body, html{
     height: 200px;
     top: 50%;
     left: 50%;
-    margin-top: -100px; /* Negative half of height. */
-    margin-left: -250px; /* Negative half of width. */
+    margin-top: -100px; 
+    margin-left: -250px;
     background-color: white;
     border-radius: 5px;
     border-color: black;
@@ -84,10 +84,43 @@ body, html{
     background-color: grey;
 }
 #playerList p{
-    color : white;
     font-size: 20px;
     width: 12.5%;
     float: left;
     text-align: center;
     margin: 0;
+    align-self: center;
+
+}
+#playerList{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 12.5%;
+    color: white;
+}
+
+.highlight{
+    color: green;
+}
+#answer{
+    display: none;
+    position: fixed;
+    text-align: center;
+    align-content: center;
+    width: 500px;
+    height: 200px;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px; 
+    margin-left: -250px;
+    background-color: white;
+    border-radius: 5px;
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
+}
+
+.panswer{
+    font-size: 30px;
 }
