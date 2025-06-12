@@ -6,7 +6,12 @@
 }
 #title{
     text-align: center;
-    
+    margin:auto;
+    font-size:120px;
+    background-color: #faca43;
+    color:whitesmoke;
+    width:50%;
+    height:300px;
 }
 #numOfPlayer{
     text-align: center;
@@ -100,7 +105,8 @@ body, html{
     color: white;
 }
 
-.highlight{
+.current-player {
+    font-weight: bold;
     color: green;
 }
 #answer{

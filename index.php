@@ -3,7 +3,7 @@ session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['players'])) {
     $_SESSION['players'] = $_POST['players'];
     $_SESSION['currentPlayer'] = 0;
-    $_SESSION['playerMoney'] = array_fill(0, count($_POST['players']), 1000);
+    $_SESSION['money'] = array_fill(0, count($_POST['players']), 1000);
     $_SESSION['playerBets'] = array_fill(0, count($_POST['players']), 0);
     $_SESSION['gameStarted'] = true;
     header('Location: game.php');
